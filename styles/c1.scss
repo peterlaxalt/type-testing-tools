@@ -100,19 +100,19 @@
   }
 
   @at-root {
-    body.--ap {
+    body.c1.--ap {
       [data-hm-mode-toggle="autoplay"] {
         @include styles-active();
       }
     }
 
-    body.--inv {
+    body.c1.--inv {
       [data-hm-mode-toggle="invert"] {
         @include styles-active();
       }
     }
 
-    body.--mc {
+    body.c1.--mc {
       [data-hm-mode-toggle="monochrome"] {
         @include styles-active();
       }
@@ -120,7 +120,7 @@
   }
 }
 
-body::before {
+body.c1::before {
   content: "";
 
   position: fixed;
@@ -143,12 +143,12 @@ body::before {
   transition: opacity 1s ease;
 }
 
-body.--inv::before {
+body.c1.--inv::before {
   opacity: 1;
 }
 
-body.--mc [data-hm-w],
-body.--mc [data-hm-g] .c {
+body.c1.--mc [data-hm-w],
+body.c1.--mc [data-hm-g] .c {
   background-color: #000 !important;
 }
 

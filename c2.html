@@ -8,18 +8,20 @@
   <title>headmaze</title>
   <link rel="stylesheet" href="styles.scss" />
 </head>
-<body class="c1">
-  <div class="gc"><span></span></div>
+<body class="c2">
+  <div class="hm-bm">
+    <img src="/assets/dots-h.svg" />
+    <img src="/assets/dots-m.svg" />
+  </div>
   <main data-hm-w>
-    <div class="t">
-      <button data-hm-mode-toggle="monochrome">Monochrome</button>
-      <button data-hm-mode-toggle="invert">Invert</button>
-      <button data-hm-mode-toggle="autoplay">Autoplay</button>
-    </div>
-    <div data-hm-bm></div>
-    <div data-hm-g></div>
+    <img src="/assets/roman-head.svg" data-hm-roman="head" />
+    <img src="/assets/roman-maze.svg" data-hm-roman="maze" />
+
+    <span class="hm-inst">
+      Click anywhere
+    </span>
   </main>
-  <script type="module" src="c1.js"></script>
   <script type="module" src="hm.js"></script>
+  <script type="module" src="c2.js"></script>
 </body>
 </html>

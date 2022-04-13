@@ -1,0 +1,119 @@
+body.c2 {
+  background: white;
+
+  overflow: hidden;
+
+  // transition: filter 10s ease;
+
+  [data-hm-w] {
+    background: white;
+  }
+
+  * {
+    user-select: none;
+  }
+
+  cursor: crosshair;
+}
+
+[data-hm-roman] {
+  position: fixed;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  mix-blend-mode: multiply;
+
+  height: 30vh;
+}
+
+[data-hm-roman="maze"] {
+  transform: translate(-50%, -48.5%) scale(.97);
+}
+
+@keyframes morph{
+  0%, 100% {
+  border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+  }
+  34% {
+    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+  }
+  67% {
+    border-radius: 100% 60% 60% 100% / 100% 100% 60% 60%;
+  }
+}
+
+.hm-inst {
+  position: fixed;
+
+  left: 50%;
+  bottom: 50px;
+
+  font-family: 'Times New Roman', Times, serif;
+
+  transform: translateX(-50%);
+
+  z-index: 9999999;
+
+  color: black;
+}
+
+.hm-bm {
+  position: fixed;
+
+  left: 50%;
+  top: 50px;
+
+  transform: translateX(-50%);
+
+  z-index: 9999999;
+
+  width: 100px;
+  height: 100px;
+
+  img {
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    mix-blend-mode: multiply;
+  }
+
+}
+
+
+.hm-cx {
+  position: fixed;
+
+  left: 0px;
+  top: 0px;
+
+  z-index: 999999999;
+
+  animation: morph 8s ease infinite;
+
+  mix-blend-mode: multiply;
+
+  opacity: 0;
+
+  transition: opacity 1s ease;
+
+  pointer-events: none;
+
+  &.--a {
+    opacity: 1;
+  }
+
+  &.--clr-b {
+    background: blue;
+  }
+
+  &.--clr-r {
+    background: red;
+  }
+}

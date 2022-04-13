@@ -1,0 +1,69 @@
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body.c3 {
+  background: black;
+
+  // transition: filter 10s ease;
+
+  [data-hm-dot-grid] {
+    background: rgba(255, 255, 255, 0);
+
+    width: var(--w);
+    height: var(--h);
+
+    position: fixed;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    display: grid;
+
+    grid-template-columns: var(--cols);
+    grid-template-rows: var(--rows);
+    grid-auto-flow: column;
+    gap: var(--g);
+
+    &.--rotate button.--a,
+    &.--rotate button:hover {
+      animation: rotate var(--rS) linear infinite;
+    }
+
+    &.--gr-conic button.--a,
+    &.--gr-conic button:hover {
+      background: conic-gradient(from 90deg at 50% 50%, #000000, #242424, #434343, #656565, #898989, #afafaf, #d6d6d6, #ffffff);
+    }
+  }
+
+  * {
+    appearance: none;
+
+    outline: none;
+    border: none;
+
+    padding: 0;
+    margin: 0;
+  }
+
+  [data-hm-dot-grid] button {
+    grid-row: var(--cY) / calc(var(--cY) + 1);
+    grid-column: var(--cX) / calc(var(--cX) + 1);
+
+    background: none;
+
+    border-radius: var(--r);
+
+    &.--a,
+    &:hover {
+      background: white;
+    }
+  }
+}
