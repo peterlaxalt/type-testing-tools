@@ -9,8 +9,12 @@ class HeadMaze {
 
     this.pages = [
       {
-        name: "01",
+        name: "01a",
         href: "/index.html",
+      },
+      {
+        name: "01b",
+        href: "/01b.html",
       },
       {
         name: "02",
