@@ -18,12 +18,23 @@ class c1 {
         key: "[data-hm-mode-toggle]",
         elements: [],
       },
+      cubeFaces: {
+        key: "[data-face]",
+        elements: [],
+      },
     };
 
     this.mode = {
-      monochrome: false,
+      monochrome: true,
       invert: false,
       autoplay: true,
+      smoothRotate: false
+    };
+
+    this.state = {
+      x: 0,
+      y: 0,
+      z: 0,
     };
 
     this.cells = [
@@ -120,7 +131,7 @@ class c1 {
 
       asset: "/assets/arrow.svg",
       deg: 90 * Math.floor(Math.random() * 10),
-      bg: randomColor(),
+      bg: this.mode.monochrome ? "#000" : randomColor(),
     };
 
     this.dom.wrapper.current.setAttribute(
@@ -131,8 +142,11 @@ class c1 {
     currentCell.setAttribute("style", this.generateStyles(newStyles));
   }
 
-  createCells() {
+  createCells(face) {
     this.log("createCells(): adding cells", this.dom.grid);
+
+    let wrapper = document.createElement("div");
+    wrapper.setAttribute("data-hm-g", true);
 
     this.cells.forEach((cell, idx) => {
       let cellElement = document.createElement("div");
@@ -142,7 +156,8 @@ class c1 {
       cellElement.addEventListener("mouseover", this.updateCell.bind(this));
       cellElement.addEventListener("click", this.updateCell.bind(this));
 
-      this.dom.grid.current.appendChild(cellElement);
+      wrapper.appendChild(cellElement);
+      face.appendChild(wrapper);
     });
   }
 
@@ -187,6 +202,16 @@ class c1 {
     }
   }
 
+  updateSmoothRotate(is) {
+    let modifier = "--smooth-rotate";
+
+    if (is == true) {
+      document.body.classList.add(modifier);
+    } else {
+      document.body.classList.remove(modifier);
+    }
+  }
+
   checkModes() {
     if (this.mode.monochrome) {
       this.updateMonochrome(true);
@@ -204,6 +229,12 @@ class c1 {
       this.updateTimer(true);
     } else {
       this.updateTimer(false);
+    }
+
+    if (this.mode.smoothRotate) {
+      this.updateSmoothRotate(true);
+    } else {
+      this.updateSmoothRotate(false);
     }
   }
 
@@ -243,13 +274,50 @@ class c1 {
     }
   }
 
+  updateBodyRotationValues() {
+    let body = document.body;
+
+    body.setAttribute('style', `--rX: ${this.state.x}deg; --rY: ${this.state.y}deg; --rZ: ${this.state.z}deg`)
+  }
+
+  updateRotationValues() {
+    this.log("updateRotationValues(): updating values");
+
+    let _self = this;
+
+
+    function randomlyIncrementOrDecrementValue(val) {
+      let newVal = _self.state[val];
+
+      let posOrNeg = Math.random() < 0.5 ? 1 : -1;
+      
+      _self.state[val] = newVal + (90 * posOrNeg);
+    }
+
+    randomlyIncrementOrDecrementValue('x');
+    randomlyIncrementOrDecrementValue('y');
+    randomlyIncrementOrDecrementValue('z');
+
+    this.updateBodyRotationValues();
+
+    this.startRotationTimer();
+  }
+
+  startRotationTimer() {
+    this.log("startRotationTimer(): starting rotation timer");
+
+    setTimeout(this.updateRotationValues.bind(this), 4000);
+  }
+
   createDOM() {
     this.log("createDOM(): creating dom");
 
     const brandmark = document.querySelector(this.dom.brandmark.key);
-    const grid = document.querySelector(this.dom.grid.key);
+    // const grid = document.querySelector(this.dom.grid.key);
     const wrapper = document.querySelector(this.dom.wrapper.key);
     const toggles = document.querySelectorAll(this.dom.toggles.key);
+
+    const cubeFaces = document.querySelectorAll(this.dom.cubeFaces.key);
 
     if (brandmark) {
       this.log("createDOM(): added brandmark", brandmark);
@@ -258,14 +326,22 @@ class c1 {
       this.addBrandmark();
     }
 
-    if (grid) {
-      this.log("createDOM(): added grid", grid);
+    // if (grid) {
+    //   this.log("createDOM(): added grid", grid);
 
-      this.dom.grid.current = grid;
-      this.createCells();
+    //   this.dom.grid.current = grid;
+    //   this.createCells();
 
-      grid.addEventListener("mouseenter", this.handleGridEnter.bind(this));
-      grid.addEventListener("mouseleave", this.handleGridExit.bind(this));
+    //   grid.addEventListener("mouseenter", this.handleGridEnter.bind(this));
+    //   grid.addEventListener("mouseleave", this.handleGridExit.bind(this));
+    // }
+
+    if (cubeFaces) {
+      this.log("createDOM(): added cubeFaces", cubeFaces);
+
+      cubeFaces.forEach((face) => {
+        this.createCells(face);
+      });
     }
 
     if (wrapper) {
@@ -280,6 +356,7 @@ class c1 {
       });
     }
 
+    this.startRotationTimer();
     this.checkModes();
   }
 

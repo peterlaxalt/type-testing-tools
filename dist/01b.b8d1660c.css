@@ -172,7 +172,7 @@ body, html {
   transform: translateX(-50%);
 }
 
-[data-hm-g] {
+body.c1 [data-hm-g] {
   width: 80vh;
   height: 80vh;
   grid-template-rows: 1fr 1fr 1fr;
@@ -185,13 +185,13 @@ body, html {
   transform: translate(-50%, -50%);
 }
 
-[data-hm-g] .c {
+body.c1 [data-hm-g] .c {
   transform: rotate(var(--d) );
   background-color: var(--b);
   cursor: pointer;
 }
 
-[data-hm-g] .c:before {
+body.c1 [data-hm-g] .c:before {
   content: "";
   width: 100%;
   height: 100%;
@@ -204,20 +204,20 @@ body, html {
   left: 0;
 }
 
-[data-hm-w] {
+body.c1 [data-hm-w] {
   height: 100vh;
   width: 100vw;
 }
 
-[data-hm-g] .c:before, [data-hm-bm], [data-hm-mode-toggle], [data-hm-mode-toggle], .t {
+body.c1 [data-hm-g] .c:before, body.c1 [data-hm-bm], body.c1 [data-hm-mode-toggle], body.c1 [data-hm-mode-toggle], body.c1 .t {
   mix-blend-mode: exclusion;
 }
 
-[data-hm-g] .c, [data-hm-w] {
+body.c1 [data-hm-g] .c, body.c1 [data-hm-w] {
   transition: background-color 1s;
 }
 
-.t {
+body.c1 .t {
   width: 100vw;
   text-align: right;
   padding-right: 10px;
@@ -227,7 +227,7 @@ body, html {
   transform: translateX(-50%);
 }
 
-[data-hm-mode-toggle] {
+body.c1 [data-hm-mode-toggle] {
   appearance: none;
   background: unset;
   color: #fff;
@@ -285,6 +285,240 @@ body.c1.--mc [data-hm-w], body.c1.--mc [data-hm-g] .c {
   height: 1000vh;
   background-image: url("noise-anim.6826c440.gif");
   background-size: 50%;
+}
+
+@keyframes spin-cube {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0px);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(0) translateZ(0px);
+  }
+}
+
+@keyframes iso-spin-cube {
+  0% {
+    transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0px);
+  }
+
+  25% {
+    transform: rotateX(0) rotateY(0) rotateZ(0) translateZ(0px);
+  }
+
+  50% {
+    transform: rotateX(180deg) rotateY(0deg) rotateZ(0) translateZ(0px);
+  }
+
+  75% {
+    transform: rotateX(180deg) rotateY(0deg) rotateZ(0) translateZ(0px);
+  }
+
+  100% {
+    transform: rotateX(180deg) rotateY(180deg) rotateZ(0) translateZ(0px);
+  }
+}
+
+body.c1b * {
+  box-sizing: border-box;
+}
+
+body.c1b [data-hm-g] {
+  width: 80vh;
+  height: 80vh;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 4.25vh;
+  display: grid;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body.c1b [data-hm-g] .c {
+  transform: rotate(var(--d) );
+  background-color: var(--b);
+  cursor: pointer;
+}
+
+body.c1b [data-hm-g] .c:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background-image: var(--a);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+body.c1b [data-hm-w] {
+  height: 100vh;
+  width: 100vw;
+}
+
+body.c1b [data-hm-g] .c:before, body.c1b [data-hm-bm], body.c1b [data-hm-mode-toggle], body.c1b [data-hm-mode-toggle], body.c1b .t {
+  mix-blend-mode: exclusion;
+}
+
+body.c1b [data-hm-g] .c, body.c1b [data-hm-w] {
+  transition: background-color 1s;
+}
+
+body.c1b .t {
+  width: 100vw;
+  text-align: right;
+  z-index: 20;
+  padding-right: 10px;
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+body.c1b [data-hm-mode-toggle] {
+  appearance: none;
+  background: unset;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  outline: none;
+  margin: 0;
+  padding: 5px 10px;
+  font-size: 10px;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+body.c1b.--ap [data-hm-mode-toggle="autoplay"], body.c1b.--inv [data-hm-mode-toggle="invert"], body.c1b.--mc [data-hm-mode-toggle="monochrome"], body.c1b.--smooth-rotate [data-hm-mode-toggle="smoothRotate"] {
+  color: #000;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px #fff;
+}
+
+body.c1b:before {
+  content: "";
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  opacity: 0;
+  background: #fff;
+  transition: opacity 1s;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+body.c1b.--inv:before {
+  opacity: 1;
+}
+
+body.c1b.--mc [data-hm-w], body.c1b.--mc [data-hm-g] .c {
+  background-color: #000 !important;
+}
+
+.gc {
+  pointer-events: none;
+  z-index: 999;
+  opacity: .1;
+  display: flex;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+}
+
+.gc span {
+  width: 1000vw;
+  height: 1000vh;
+  background-image: url("noise-anim.6826c440.gif");
+  background-size: 50%;
+}
+
+body.c1b.--smooth-rotate .hm-cube-view {
+  perspective: unset;
+}
+
+body.c1b.--smooth-rotate .hm-cube-view .hm-cube {
+  animation: spin-cube 20s linear infinite;
+}
+
+body.c1b .hm-cube-view {
+  perspective: unset;
+  transform-style: preserve-3d;
+  place-items: center;
+  display: grid;
+  overflow: hidden;
+}
+
+body.c1b .hm-cube-view * {
+  transform-style: preserve-3d;
+}
+
+body.c1b .hm-cube-view .hm-cube {
+  --size: 60vh;
+  --gap: calc(var(--size)  * .05);
+  width: var(--size);
+  height: var(--size);
+  transform: rotateX(var(--rX) ) rotateY(var(--rY) ) rotateZ(var(--rZ) ) translateZ(0px);
+  transition: transform 2s;
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face] {
+  width: var(--size);
+  height: var(--size);
+  background: #000;
+  place-items: center;
+  display: grid;
+  position: absolute;
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face] [data-hm-g] {
+  width: var(--size);
+  height: var(--size);
+  padding: calc(var(--gap)  / 2);
+  gap: var(--gap);
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face="back"] {
+  transform: translateZ(calc(var(--size)  / -2) ) rotateY(180deg);
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face="right"] {
+  transform: rotateY(-270deg) translateX(calc(var(--size)  / 2) );
+  transform-origin: 100% 0;
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face="left"] {
+  transform: rotateY(270deg) translateX(calc(var(--size)  / -2) );
+  transform-origin: 0;
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face="top"] {
+  transform: rotateX(-90deg) translateY(calc(var(--size)  / -2) );
+  transform-origin: top;
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face="bottom"] {
+  transform: rotateX(90deg) translateY(calc(var(--size)  / 2) );
+  transform-origin: bottom;
+}
+
+body.c1b .hm-cube-view .hm-cube [data-face="front"] {
+  transform: translateZ(calc(var(--size)  / 2) );
+}
+
+body.c1b .hm-cube-view {
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 body.c2 {

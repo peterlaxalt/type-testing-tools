@@ -21,7 +21,7 @@ class c1 {
     };
 
     this.mode = {
-      monochrome: false,
+      monochrome: true,
       invert: false,
       autoplay: true,
     };
