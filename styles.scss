@@ -1,67 +1,7 @@
 // ___________________
 // Resets
 @import "styles/normalize.scss";
-@import "styles/color.scss";
-@import "styles/type.scss";
-@import "styles/branding.scss";
-
 
 // ___________________
 // Concepts
-@import "styles/c1.scss";
-@import "styles/c1b.scss";
-@import "styles/c2.scss";
-@import "styles/c3.scss";
-
-// ___________________
-// Navigation
-.hm-n {
-  position: fixed;
-  
-  left: 10px;
-  bottom: 10px;
-
-  z-index: 9999999999999999999999;
-
-  mix-blend-mode: exclusion;
-
-  font-size: 12px;
-
-  ul {
-    list-style-type: none;
-
-    padding: 0;
-    margin: 0;
-
-    display: flex;
-
-    &:before {
-      content: "Browse concepts:";
-
-      display: block;
-
-      margin-right: 10px;
-    }
-  }
-
-  a {
-    color: white;
-
-    text-decoration: none;
-
-    opacity: .7;
-  }
-
-  li + li {
-    margin-left: 10px;
-  }
-
-  li.--a,
-  li.--a a {
-    text-decoration: underline;
-  }
-
-  li.--a a {
-    opacity: 1;
-  }
-}
+@import "styles/varfont.scss";

@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex">
-  <title>headmaze</title>
-  <link rel="stylesheet" href="styles.scss" />
-</head>
-<body class="c1">
-  <div class="gc"><span></span></div>
-  <main data-hm-w>
-    <div class="t">
-      <button data-hm-mode-toggle="monochrome">Monochrome</button>
-      <button data-hm-mode-toggle="invert">Invert</button>
-      <button data-hm-mode-toggle="autoplay">Autoplay</button>
-    </div>
-    <div data-hm-bm></div>
-    <div data-hm-g></div>
-  </main>
-  <script type="module" src="c1.js"></script>
-  <script type="module" src="hm.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Variable font tools</title>
+    <link rel="stylesheet" href="styles.scss" />
+  </head>
+  <body class="varfont">
+    <main data-vf-wrapper>
+      <div data-vf-upload>
+        <form>
+          <input id="upload" type="file" name="files" data-vf-loader />
+        </form>
+      </div>
+      <div data-vf-disply>
+        <div class="vf-ex-1">
+          <span class="vf-ex-1-sample" contenteditable="true">
+            STUDIO LAXALT
+          </span>
+        </div>
+      </div>
+    </main>
+    <script type="module" src="varfont.js"></script>
+  </body>
 </html>

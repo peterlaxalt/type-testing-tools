@@ -1,0 +1,36 @@
+
+@keyframes variableFlow {
+  0% {
+    font-variation-settings: "wght" 0;
+  }
+  50% {
+    font-variation-settings: "wght" 700;
+  }
+
+  100% {
+    font-variation-settings: "wght" 0;
+  }
+}
+
+body {
+  background: #111;
+  color: #fafafa;
+}
+
+[data-vf-wrapper] {
+  padding: 40px;
+}
+
+.vf-ex-1 {
+  .vf-ex-1-sample {
+    display: block;
+
+    padding-top: 40px;
+    
+    font-family: "TestFont";
+    font-size: 15vw;
+    line-height: .8;
+
+    animation: variableFlow 10s infinite linear both;
+  }
+}
