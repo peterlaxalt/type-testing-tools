@@ -198,6 +198,10 @@ body {
   font-family: sans-serif;
 }
 
+body :focus {
+  outline: none;
+}
+
 [data-vf-wrapper] {
   padding: 15px 0 100px 40px;
 }
@@ -274,12 +278,15 @@ body {
 }
 
 .vf-ex-2 .vf-ex-2-sample, .vf-ex-2 .vf-ex-3-sample, .vf-ex-3 .vf-ex-2-sample, .vf-ex-3 .vf-ex-3-sample {
-  white-space: nowrap;
   font-variation-settings: "wght" var(--fw);
   padding-top: 20px;
   font-family: TestFont;
   font-size: 15vw;
   line-height: .8;
   display: block;
+}
+
+.vf-ex-2:has([name="vf-ex-1-linebreak"]:checked) .vf-ex-2-sample, .vf-ex-2:has([name="vf-ex-1-linebreak"]:checked) .vf-ex-3-sample, .vf-ex-3:has([name="vf-ex-1-linebreak"]:checked) .vf-ex-2-sample, .vf-ex-3:has([name="vf-ex-1-linebreak"]:checked) .vf-ex-3-sample {
+  white-space: nowrap;
 }
 /*# sourceMappingURL=index.b8d1660c.css.map */
