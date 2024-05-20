@@ -5,22 +5,99 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>Variable font tools</title>
+    <title>Variable font proofer</title>
     <link rel="stylesheet" href="styles.scss" />
   </head>
   <body class="varfont">
     <main data-vf-wrapper>
-      <div data-vf-upload>
-        <form>
-          <input id="upload" type="file" name="files" data-vf-loader />
-        </form>
-      </div>
-      <div data-vf-disply>
-        <div class="vf-ex-1">
-          <span class="vf-ex-1-sample" contenteditable="true">
-            STUDIO LAXALT
-          </span>
+      <div class="vf-tools">
+        <div class="vf-tool">
+          Upload font ━
         </div>
+        <div class="vf-tool">
+          <form>
+            <input id="upload" type="file" name="files" data-vf-loader />
+          </form>
+        </div>
+      </div>
+      <div data-vf-display>
+
+        <!-- Light font weight proof -->
+        <div class="vf-ex vf-ex-2" style="--fw: 0">
+          <div class="vf-ex-title">
+            Font weight 0 proof
+          </div>
+          
+          <div class="vf-ex-2-sample" contenteditable="true">
+            STUDIO LAXALT
+          </div>
+        </div>
+
+        <!-- Mid font weight proof -->
+        <div class="vf-ex vf-ex-2" style="--fw: 350">
+          <div class="vf-ex-title">
+            Font weight 350 proof
+          </div>
+          
+          <div class="vf-ex-2-sample" contenteditable="true">
+            STUDIO LAXALT
+          </div>
+        </div>
+
+        <!-- Heavy font weight proof -->
+        <div class="vf-ex vf-ex-2" style="--fw: 700">
+          <div class="vf-ex-title">
+            Font weight 700 proof
+          </div>
+          
+          <div class="vf-ex-2-sample" contenteditable="true">
+            STUDIO LAXALT
+          </div>
+        </div>
+
+         <!-- Dynamic proof -->
+         <div class="vf-ex vf-ex-3" style="--fw: 350" data-vf-weight-proof>
+          <div class="vf-ex-title">
+            Dynamic weight proof
+          </div>
+          <div class="vf-ex-settings">
+            <div class="vf-setting">
+              <form>
+                <input type="range" min="0" max="700" value="350" id="weight" data-vf-weight-slider>
+              </form>
+            </div>
+
+            <div class="vf-setting">
+              <input type="checkbox" name="vf-ex-1-linebreak" id="vf-ex-1-linebreak" checked />
+              <label for="vf-ex-1-linebreak">No line break</label>
+            </div>
+          </div>
+          <div class="vf-ex-3-sample" contenteditable="true">
+            STUDIO LAXALT
+          </div>
+        </div>
+
+        <!-- Animation proof -->
+        <div class="vf-ex vf-ex-1">
+          <div class="vf-ex-title">
+            Animation proof
+          </div>
+          <div class="vf-ex-settings">
+            <div class="vf-setting">
+              <input type="checkbox" name="vf-ex-1-anim" id="vf-ex-1-anim" />
+              <label for="vf-ex-1-anim">Animate</label>
+            </div>
+
+            <div class="vf-setting">
+              <input type="checkbox" name="vf-ex-1-linebreak" id="vf-ex-1-linebreak" checked />
+              <label for="vf-ex-1-linebreak">No line break</label>
+            </div>
+          </div>
+          <div class="vf-ex-1-sample" contenteditable="true">
+            STUDIO LAXALT
+          </div>
+        </div>
+
       </div>
     </main>
     <script type="module" src="varfont.js"></script>

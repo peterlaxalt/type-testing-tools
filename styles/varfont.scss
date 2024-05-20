@@ -1,4 +1,68 @@
+:root {
+  --clr-bg: #111;
+  --clr-fg: #fafafa;
+}
 
+body {
+  background: var(--clr-bg);
+  color: var(--clr-fg);
+
+  font-family: sans-serif;
+}
+
+// Wrapper
+[data-vf-wrapper] {
+  padding: 15px 0px 100px 40px;
+}
+
+.vf-tools {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+
+  width: 100%;
+  display: flex;
+  gap: 20px;
+
+  align-items: center;
+
+  padding: 15px 40px;
+
+  background: var(--clr-bg);
+  border-top: 1px solid var(--clr-fg);
+
+  // .vf-tool {
+  //   flex: 1;
+  // }
+}
+
+// Examples core
+
+.vf-ex {
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  border-bottom: 1px dotted var(--clr-fg);
+}
+
+.vf-ex-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 300;
+
+  margin-bottom: 20px;
+
+  opacity: .55;
+}
+
+.vf-ex-settings {
+  display: flex;
+
+  gap: 20px;
+}
+
+// Example animation
 @keyframes variableFlow {
   0% {
     font-variation-settings: "wght" 0;
@@ -12,25 +76,51 @@
   }
 }
 
-body {
-  background: #111;
-  color: #fafafa;
-}
-
-[data-vf-wrapper] {
-  padding: 40px;
-}
-
 .vf-ex-1 {
+  overflow: hidden;
+
+
   .vf-ex-1-sample {
     display: block;
 
-    padding-top: 40px;
-    
+    padding-top: 20px;
+
     font-family: "TestFont";
     font-size: 15vw;
-    line-height: .8;
-
-    animation: variableFlow 10s infinite linear both;
+    line-height: 0.8;
   }
+
+  &:has([name="vf-ex-1-anim"]:checked) {
+    .vf-ex-1-sample {
+      animation: variableFlow 10s infinite linear both;
+    }
+  }
+
+  &:has([name="vf-ex-1-linebreak"]:checked) {
+    .vf-ex-1-sample {
+      white-space: nowrap;
+    }
+  }
+}
+
+// Light font weight proof
+
+.vf-ex-2,
+.vf-ex-3 {
+  overflow: hidden;
+
+
+  .vf-ex-2-sample,
+  .vf-ex-3-sample {
+    display: block;
+
+    padding-top: 20px;
+
+    font-family: "TestFont";
+    font-size: 15vw;
+    line-height: 0.8;
+    white-space: nowrap;
+    font-variation-settings: "wght" var(--fw);
+  }
+
 }

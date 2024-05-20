@@ -187,6 +187,54 @@ template, [hidden] {
   display: none;
 }
 
+:root {
+  --clr-bg: #111;
+  --clr-fg: #fafafa;
+}
+
+body {
+  background: var(--clr-bg);
+  color: var(--clr-fg);
+  font-family: sans-serif;
+}
+
+[data-vf-wrapper] {
+  padding: 15px 0 100px 40px;
+}
+
+.vf-tools {
+  background: var(--clr-bg);
+  border-top: 1px solid var(--clr-fg);
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  padding: 15px 40px;
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.vf-ex {
+  border-bottom: 1px dotted var(--clr-fg);
+  padding-top: 20px;
+  padding-bottom: 40px;
+}
+
+.vf-ex-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  opacity: .55;
+  margin-bottom: 20px;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.vf-ex-settings {
+  gap: 20px;
+  display: flex;
+}
+
 @keyframes variableFlow {
   0% {
     font-variation-settings: "wght" 0;
@@ -201,21 +249,37 @@ template, [hidden] {
   }
 }
 
-body {
-  color: #fafafa;
-  background: #111;
-}
-
-[data-vf-wrapper] {
-  padding: 40px;
+.vf-ex-1 {
+  overflow: hidden;
 }
 
 .vf-ex-1 .vf-ex-1-sample {
-  padding-top: 40px;
+  padding-top: 20px;
   font-family: TestFont;
   font-size: 15vw;
   line-height: .8;
+  display: block;
+}
+
+.vf-ex-1:has([name="vf-ex-1-anim"]:checked) .vf-ex-1-sample {
   animation: 10s linear infinite both variableFlow;
+}
+
+.vf-ex-1:has([name="vf-ex-1-linebreak"]:checked) .vf-ex-1-sample {
+  white-space: nowrap;
+}
+
+.vf-ex-2, .vf-ex-3 {
+  overflow: hidden;
+}
+
+.vf-ex-2 .vf-ex-2-sample, .vf-ex-2 .vf-ex-3-sample, .vf-ex-3 .vf-ex-2-sample, .vf-ex-3 .vf-ex-3-sample {
+  white-space: nowrap;
+  font-variation-settings: "wght" var(--fw);
+  padding-top: 20px;
+  font-family: TestFont;
+  font-size: 15vw;
+  line-height: .8;
   display: block;
 }
 /*# sourceMappingURL=index.b8d1660c.css.map */
